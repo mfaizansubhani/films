@@ -50,7 +50,7 @@ class FilmController extends Controller
         $films->Photo = $request->photo;
 
         $films->save();
-        $request->session()->flash('success','film saved');
+        $request->session()->flash('success','Film saved');
         return redirect()->route('films.show',$films->id);
     }
 
