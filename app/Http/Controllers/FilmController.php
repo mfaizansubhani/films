@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Films;
+use Illuminate\Support\Facades\Session;
 
 class FilmController extends Controller
 {
@@ -13,7 +15,7 @@ class FilmController extends Controller
      */
     public function index()
     {
-        //
+        return view('welcome');
     }
 
     /**
@@ -23,7 +25,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+        return view('films.create');
     }
 
     /**
@@ -34,7 +36,22 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,array(
+            'name'=>'required'
+        ));
+
+        $films = new Films;
+        $films->Name = $request->name;
+        $films->Description = $request->description;
+        $films->ReleaseDate = $request->date;
+        $films->Rating = $request->rating;
+        $films->Price = $request->price;
+        $films->Genre = $request->genre;
+        $films->Photo = $request->photo;
+
+        $films->save();
+        $request->session()->flash('success','film saved');
+        return redirect()->route('films.show',$films->id);
     }
 
     /**
@@ -45,7 +62,7 @@ class FilmController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('films.show');
     }
 
     /**
