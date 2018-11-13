@@ -14,8 +14,8 @@ class FilmController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('welcome');
+    { $films = Films::paginate(1);
+        return view('films.index')->withFilms($films);
     }
 
     /**
@@ -49,7 +49,15 @@ class FilmController extends Controller
         $films->Genre = $request->genre;
         $films->Photo = $request->photo;
 
+
         $films->save();
+
+        $imageName = $films->id . '.' .
+            $request->file('photo')->getClientOriginalExtension();
+
+        $request->file('photo')->move(
+            base_path() . '/public/images/catalog/', $imageName);
+
         $request->session()->flash('success','Film Saved.');
         return redirect()->route('films.show',$films->id);
     }

@@ -5,7 +5,7 @@
     <div class="col-md-8 offset-md-2">
         <h1>Create New Film</h1>
         <hr>
-        {!! Form::open(['route' => 'films.store']) !!}
+        {!! Form::open(array('route' => 'films.store', 'files' => true)) !!}
         {{Form::label('name','Name:')}}
         {{Form::text('name',null,array('class' => 'form-control'))}}
         {{Form::label('description','Description:')}}
