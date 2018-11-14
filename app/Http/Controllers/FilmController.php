@@ -7,7 +7,11 @@ use App\Films;
 use Illuminate\Support\Facades\Session;
 
 class FilmController extends Controller
+{ public function __construct()
 {
+    $this->middleware('auth')->except('index');
+}
+
     /**
      * Display a listing of the resource.
      *

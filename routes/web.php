@@ -25,3 +25,6 @@ Route::group(['middleware' => ['web']],function(){
     Route::Resource('films','FilmController');
     Route::get('film/{slug}',['as' => 'film.single', 'uses' => 'FilmController@getSingle']);
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
