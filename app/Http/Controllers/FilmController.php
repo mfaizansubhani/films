@@ -48,6 +48,7 @@ class FilmController extends Controller
         $films->Price = $request->price;
         $films->Genre = $request->genre;
         $films->Photo = $request->photo;
+        $films->slug = $films->Name;
 
 
         $films->save();
@@ -70,7 +71,8 @@ class FilmController extends Controller
      */
     public function show($id)
     {
-        return view('films.show');
+        $film = Films::find($id);
+        return view('films.show')->withFilm($film);
     }
 
     /**
@@ -105,5 +107,11 @@ class FilmController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getSingle($slug)
+    {
+        $film = Films::where('slug','=',$slug)->first();
+        return view('films.show')->withFilm($film);
     }
 }
