@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Films;
 use Illuminate\Support\Facades\Session;
@@ -97,6 +97,11 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
+    }
+
     public function update(Request $request, $id)
     {
         //
@@ -118,4 +123,6 @@ class FilmController extends Controller
         $film = Films::where('slug','=',$slug)->first();
         return view('films.show')->withFilm($film);
     }
+
+
 }

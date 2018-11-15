@@ -36,10 +36,10 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another Activity</a></li>
-                    <li role = "separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/logout"}>Logout</a></li>
+
+
                 </ul>
             </li>
         </ul>
