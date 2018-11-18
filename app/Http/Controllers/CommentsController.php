@@ -38,7 +38,7 @@ class CommentsController extends Controller
         $comment = new Commentss;
         $comment->name = $request->name;
         $comment->comment = $request->comment;
-        $comment->films_id = 1;
+        $comment->films_id = $film_id;
         $comment->email = "faizansubhani@hotmail.com";
         $comment->save();
         return redirect()->route('films.show',[$film->id]);
