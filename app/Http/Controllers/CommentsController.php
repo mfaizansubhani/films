@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Commentss;
+use App\Films;
 class CommentsController extends Controller
 {
     /**
@@ -32,9 +33,15 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request,$film_id)
+    {   $film = Films::find($film_id);
+        $comment = new Commentss;
+        $comment->name = $request->name;
+        $comment->comment = $request->comment;
+        $comment->films_id = 1;
+        $comment->email = "faizansubhani@hotmail.com";
+        $comment->save();
+        return redirect()->route('films.show',[$film->id]);
     }
 
     /**

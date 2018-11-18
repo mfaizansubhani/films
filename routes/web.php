@@ -26,6 +26,7 @@ Route::group(['middleware' => ['web']],function(){
 
     Route::get('film/{slug}',['as' => 'film.single', 'uses' => 'FilmController@getSingle']);
     Route::get('logout', 'FilmController@logout');
+    Route::post('comments/{film_id}',['uses' => 'CommentsController@store', 'as' => 'comments.store'] );
 });
 Auth::routes();
 
